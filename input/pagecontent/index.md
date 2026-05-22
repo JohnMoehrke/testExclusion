@@ -5,7 +5,7 @@ Expansion does not exclude codes by property even if the codeSystem is in THO
 
 ### Source
 
-The source code for this Implementation Guide can be found on [GitHub](https://github.com/JohnMoehrke/testexclusion)
+The source code for this Implementation Guide can be found on [GitHub](https://github.com/JohnMoehrke/testExclusion)
 
 #### Cross Version Analysis
 
