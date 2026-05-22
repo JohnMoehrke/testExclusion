@@ -1,7 +1,7 @@
 
 # Testexclusion example IG
 
-- ci-build - http://build.fhir.org/ig/JohnMoehrke/testexclusion/branches/main/index.html
+- ci-build - https://build.fhir.org/ig/JohnMoehrke/testExclusion/branches/main/index.html
 
 ## Status
 
