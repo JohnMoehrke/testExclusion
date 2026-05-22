@@ -3,7 +3,9 @@
 Instance: ExclusionCodesVS
 InstanceOf: ValueSet
 Title: "Example Exclusion Codes ValueSet"
-Description: "Example ValueSet for exclusion codes for completeness sake. No actual use of this ValueSet other than an example"
+Description: "Example ValueSet for exclusion codes for completeness sake. No actual use of this ValueSet other than an example.
+
+This one is expanding from THO, excluding those that are not selectable. So this should NOT have  _ActAccommodationReason."
 Usage: #definition
 * experimental = false
 * status = #active
