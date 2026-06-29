@@ -1,7 +1,7 @@
 
 Testing if ValueSet exclusion works in the IG Publisher, specifically the internal expansion
 
-Expansion does not exclude codes by property even if the codeSystem is in THO
+Look for **failure** in artifacts description to see the various failures.
 
 ### Source
 

@@ -4,4 +4,5 @@
 # (And include comments like this justifying why)
 # See https://github.com/FHIR/sample-ig/blob/master/input/ignoreWarnings.txt for examples
 
-
+# being cheeky using the example OID 
+The assigned auto-oid-root value '2.999.67.67.67.6.7' is not registered in https://github.com/FHIR/ig-registry/blob/master/oid-assignments.json so isn't known to be valid
