@@ -67,3 +67,52 @@ Usage: #definition
 * compose.exclude.filter.property = BunchOfPropertiesCS#useful
 * compose.exclude.filter.op = #=
 * compose.exclude.filter.value = "false"
+
+Instance: AllOfCodesVS
+InstanceOf: ValueSet
+Title: "Example ValueSet including all codes from BunchOfCodesCS"
+Description: "Example ValueSet including all codes from BunchOfCodesCS for completeness sake.
+No actual use of this ValueSet other than an example."
+Usage: #definition
+* experimental = false
+* status = #active
+* name = "AllOfCodesVS"
+* compose.include.system = Canonical(BunchOfCodesCS)
+
+// Questionnaire that has one item using UsefulBunchOfCodesVS
+Instance: UsefulBunchOfCodesQuestionnaire
+InstanceOf: Questionnaire
+Title: "Example Questionnaire using UsefulBunchOfCodesVS"
+Description: "Example Questionnaire using UsefulBunchOfCodesVS for completeness sake. No actual use of this Questionnaire other than an example."
+Usage: #definition
+* status = #active
+* name = "UsefulBunchOfCodesQuestionnaire"
+* item[+].linkId = "1"
+* item[=].text = "Select a code"
+* item[=].type = #choice
+* item[=].required = true
+* item[=].answerValueSet = Canonical(UsefulBunchOfCodesVS)
+
+// QuestionnaireResponse that has one answer using UsefulBunchOfCodesVS
+Instance: UsefulBunchOfCodesQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
+Title: "Example QuestionnaireResponse using UsefulBunchOfCodesVS"
+Description: "Example QuestionnaireResponse using UsefulBunchOfCodesVS for completeness sake. No actual use of this QuestionnaireResponse other than an example."
+Usage: #example
+* status = #completed
+* questionnaire = Canonical(UsefulBunchOfCodesQuestionnaire)
+* item[+].linkId = "1"
+* item[=].answer[+].valueCoding = BunchOfCodesCS#code1
+
+// QuestionnaireResponse that has one answer in the codeSystem but is not allowed in the ValueSet
+Instance: NotUsefulBunchOfCodesQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
+Title: "Example QuestionnaireResponse using UsefulBunchOfCodesVS with a code that is not
+allowed in the ValueSet"
+Description: "Example QuestionnaireResponse using UsefulBunchOfCodesVS for completeness sake. No actual use of this QuestionnaireResponse other than an example."
+Usage: #example
+* status = #completed
+* questionnaire = Canonical(UsefulBunchOfCodesQuestionnaire)
+* item[+].linkId = "1"
+* item[=].answer[+].valueCoding = BunchOfCodesCS#code2
+
