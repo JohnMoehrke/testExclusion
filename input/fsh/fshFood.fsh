@@ -5,7 +5,7 @@ InstanceOf: ValueSet
 Title: "Exclusion THO Codes ValueSet"
 Description: "ValueSet for exclusion codes from THO CodeSystem.
 
-This one is expanding from THO, excluding those that are not selectable. So this should NOT have  _ActAccommodationReason. **failure**"
+This one is expanding from THO, excluding those that are not selectable. So this should NOT have  _ActAccommodationReason. **success**"
 Usage: #definition
 * experimental = false
 * status = #active
@@ -57,7 +57,7 @@ InstanceOf: ValueSet
 Title: "excluding non-useful codes from BunchOfCodesCS"
 Description: "ValueSet excluding non-useful codes from BunchOfCodesCS.
 
-This valueSet should not have codes that are not useful. Specifically should not have Code2. **failure**"
+This valueSet should not have codes that are not useful. Specifically should not have Code2. **success**"
 Usage: #definition
 * experimental = false
 * status = #active
@@ -175,36 +175,36 @@ Instance: BadUsefulBunchOfCodesQuestionnaireResponse
 InstanceOf: QuestionnaireResponse
 Title: "QuestionnaireResponse using UsefulBunchOfCodesVS with a code that is not
 allowed in the ValueSet"
-Description: "QuestionnaireResponse using code2 from BunchOfCodesCS against UsefulBunchOfCodesQuestionnaire. This should throw a validation error when code2 is not in UsefulBunchOfCodesVS. It does not throw a validation error.**failure**"
+Description: "QuestionnaireResponse using code3 from BunchOfCodesCS against UsefulBunchOfCodesQuestionnaire. This should throw a validation error when code3 is not in UsefulBunchOfCodesVS. It does throw a validation error.**success**"
 Usage: #example
 * status = #completed
 * questionnaire = Canonical(UsefulBunchOfCodesQuestionnaire)
 * item[+].linkId = "1"
-* item[=].answer[+].valueCoding = BunchOfCodesCS#code2
+* item[=].answer[+].valueCoding = BunchOfCodesCS#code3
 
 // QuestionnaireResponse that has one valid answer for only-useful questionnaire
 Instance: GoodOnlyUsefulBunchOfCodesQuestionnaireResponse
 InstanceOf: QuestionnaireResponse
 Title: "QuestionnaireResponse using good code for OnlyUsefulBunchOfCodesVS questionnaire"
-Description: "QuestionnaireResponse using code3 from BunchOfCodesCS against OnlyUsefulBunchOfCodesQuestionnaire."
-Usage: #example
-* status = #completed
-* questionnaire = Canonical(OnlyUsefulBunchOfCodesQuestionnaire)
-* item[+].linkId = "1"
-* item[=].answer[+].valueCoding = BunchOfCodesCS#code3
-
-// QuestionnaireResponse variant using code2 against only-useful questionnaire
-Instance: BadOnlyUsefulBunchOfCodesQuestionnaireResponse
-InstanceOf: QuestionnaireResponse
-Title: "QuestionnaireResponse using code2 against OnlyUsefulBunchOfCodesVS questionnaire"
-Description: "QuestionnaireResponse using code2 from BunchOfCodesCS against OnlyUsefulBunchOfCodesQuestionnaire.
-
-code2 is not in OnlyUsefulBunchOfCodesVS, so this should throw a validation error. This does not throw an error. This is surprising as OnlyUsefulBunchOfCodesVS uses inclusion only, which otherwise seems to work. **failure**"
+Description: "QuestionnaireResponse using code2 from BunchOfCodesCS against OnlyUsefulBunchOfCodesQuestionnaire."
 Usage: #example
 * status = #completed
 * questionnaire = Canonical(OnlyUsefulBunchOfCodesQuestionnaire)
 * item[+].linkId = "1"
 * item[=].answer[+].valueCoding = BunchOfCodesCS#code2
+
+// QuestionnaireResponse variant using code3 against only-useful questionnaire
+Instance: BadOnlyUsefulBunchOfCodesQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
+Title: "QuestionnaireResponse using code3 against OnlyUsefulBunchOfCodesVS questionnaire"
+Description: "QuestionnaireResponse using code3 from BunchOfCodesCS against OnlyUsefulBunchOfCodesQuestionnaire.
+
+code3 is not in OnlyUsefulBunchOfCodesVS, so this should throw a validation error. This does throw an error. **success**"
+Usage: #example
+* status = #completed
+* questionnaire = Canonical(OnlyUsefulBunchOfCodesQuestionnaire)
+* item[+].linkId = "1"
+* item[=].answer[+].valueCoding = BunchOfCodesCS#code3
 
 // QuestionnaireResponse that has one valid answer for all-codes questionnaire
 Instance: Good1AllOfCodesQuestionnaireResponse
@@ -312,7 +312,7 @@ Instance: ExcludeRetiredCodeVS
 InstanceOf: ValueSet
 Title: "excluding retired codes from SomeRetiredCodeCS"
 Description: "ValueSet excluding retired codes from SomeRetiredCodeCS.
-This will act in the validator properly, but the expansion will show the retired codes. **failure**"
+This will act in the validator properly, but the expansion will show the retired codes. **success**"
 Usage: #definition
 * experimental = false
 * status = #active
@@ -381,7 +381,7 @@ Instance: BadExcludeRetiredCodeQuestionnaireResponse
 InstanceOf: QuestionnaireResponse
 Title: "QuestionnaireResponse using a retired code against ExcludeRetiredCodeVS questionnaire"
 Description: "QuestionnaireResponse using a retired code from SomeRetiredCodeCS against ExcludeRetiredCodeQuestionnaire.
-This does throw a validation error, BUT the error is only about the code being retired. Not that it is not in the valueSet. **failure?**"
+This throw a validation error. **success**"
 Usage: #example
 * status = #completed
 * questionnaire = Canonical(ExcludeRetiredCodeQuestionnaire)
@@ -404,7 +404,7 @@ Instance: BadAllCodeQuestionnaireResponse
 InstanceOf: QuestionnaireResponse
 Title: "QuestionnaireResponse using a retired code against AllCodeVS questionnaire"
 Description: "QuestionnaireResponse using a retired code from SomeRetiredCodeCS against AllCodeQuestionnaire.
-This should pass validation because AllCodeVS includes retired codes. BUT this throws a validation error because the code is inactive/retired. Should be able to use retired codes if they are in the valueSet, right? **failure?**"
+This throws a validation warning because the code is inactive/retired.  **success**"
 Usage: #example
 * status = #completed
 * questionnaire = Canonical(AllCodeQuestionnaire)

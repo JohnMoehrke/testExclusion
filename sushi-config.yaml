@@ -33,7 +33,8 @@ parameters:  # see https://confluence.hl7.org/display/FHIR/Implementation+Guide+
   apply-jurisdiction: 'true'
   apply-publisher: 'true'
   apply-version: 'true'
-  auto-oid-root: 2.999.67.67.67.6.7 #using example OID for testing.
+#  auto-oid-root: 2.999.67.67.67.6.7 #using example OID for testing.
+  auto-oid-root: 1.3.6.1.4.1.66281.2.11
 
 #dependencies:
 #  hl7.fhir.us.core: 4.0.0

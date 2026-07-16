@@ -1,7 +1,7 @@
 
 Testing if ValueSet exclusion works in the IG Publisher, specifically the internal expansion
 
-Look for **failure** in artifacts description to see the various failures.
+Look for **failure** in artifacts description to see the various failures. -- All succeeding with IG publisher version 2.2.11
 
 ### Source
 

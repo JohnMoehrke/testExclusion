@@ -7,10 +7,7 @@ Github repo: https://github.com/JohnMoehrke/testExclusion
 
 ## Status
 
-Heard that exclusions were not working. So I wrote this focused IG to prove it.
-
-Look for **failure** in artifacts 
-description to see the various failures.
+All succeeding with IG publisher version 2.2.11
 
 ## Github issue
 
